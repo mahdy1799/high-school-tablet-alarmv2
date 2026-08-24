@@ -1,0 +1,42 @@
+<svg viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="512" height="512" rx="100" fill="#06143D"/>
+  <defs>
+    <linearGradient id="clockGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#FE7D04" />
+      <stop offset="100%" stopColor="#FFA048" />
+    </linearGradient>
+    <linearGradient id="tabGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stopColor="#081E5B" />
+      <stop offset="100%" stopColor="#030C26" />
+    </linearGradient>
+  </defs>
+  <!-- Tablet Body -->
+  <rect x="96" y="48" width="320" height="416" rx="48" fill="url(#tabGrad)" stroke="#003068" stroke-width="8"/>
+  <circle cx="256" cy="74" r="6" fill="#5B6472"/>
+  <circle cx="256" cy="436" r="14" fill="#FFFFFF" fill-opacity="0.9"/>
+  <!-- Inner Screen -->
+  <rect x="120" y="96" width="272" height="312" rx="28" fill="#FFFFFF"/>
+  <!-- Bells -->
+  <path d="M 170 170 C 160 145 195 130 210 155 Z" fill="#06143D"/>
+  <path d="M 342 170 C 352 145 317 130 302 155 Z" fill="#06143D"/>
+  <rect x="244" y="130" width="24" height="18" rx="6" fill="#06143D"/>
+  <!-- Sound waves -->
+  <path d="M 335 135 C 355 145 365 170 355 190" stroke="#FE7D04" stroke-width="8" stroke-linecap="round"/>
+  <path d="M 315 150 C 330 160 335 175 330 190" stroke="#FE7D04" stroke-width="6" stroke-linecap="round"/>
+  <!-- Clock Outer -->
+  <circle cx="256" cy="208" r="76" fill="#06143D"/>
+  <circle cx="256" cy="208" r="62" fill="#FFFFFF"/>
+  <circle cx="256" cy="208" r="52" fill="url(#clockGrad)"/>
+  <circle cx="256" cy="208" r="42" fill="#FFFFFF"/>
+  <!-- Hands -->
+  <line x1="256" y1="208" x2="256" y2="180" stroke="#06143D" stroke-width="8" stroke-linecap="round"/>
+  <line x1="256" y1="208" x2="278" y2="208" stroke="#06143D" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="256" cy="208" r="7" fill="#FE7D04"/>
+  <!-- Open Book -->
+  <path d="M 144 340 C 184 320 226 325 256 335 C 286 325 328 320 368 340 L 368 370 C 328 350 286 355 256 365 C 226 355 184 350 144 370 Z" fill="#06143D"/>
+  <!-- Graduation Cap -->
+  <polygon points="256,268 334,298 256,328 178,298" fill="#06143D"/>
+  <path d="M 208 310 L 208 326 C 208 344 304 344 304 326 L 304 310 Z" fill="#003068"/>
+  <path d="M 256 298 L 312 310 L 315 330" stroke="#FE7D04" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="315" cy="334" r="4" fill="#FE7D04"/>
+</svg>

@@ -1,0 +1,7 @@
+{
+  "name": "منبه تابلت",
+  "description": "منبه ويب موثوق ومخصص لطلاب الثانوية العامة على تابلت الوزارة - يدعم التنبيه بالفيديو (سورة يوسف، أذان الفجر، تحفيز، ورفع فيديو من التابلت) مع دعم منع إغلاق الشاشة وتنبيهات صوتية واهتزازية كاملة",
+  "requestFramePermissions": ["notifications"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

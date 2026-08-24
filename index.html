@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ar" dir="rtl" class="bg-black">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>منبه تابلت — الثانوية العامة</title>
+    <meta name="description" content="منبه ويب موثوق ومخصص لطلاب الثانوية العامة على تابلت الوزارة - يعمل بدون تثبيت مع دعم قفل الشاشة والأصوات التخليقية" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="منبه تابلت" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" type="image/svg+xml" href="/icon-192.svg" />
+    <link rel="apple-touch-icon" href="/icon-192.svg" />
+
+    <!-- Google Fonts: Cairo, Tajawal, Space Grotesk & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;600;700;800&family=Space+Grotesk:wght@500;700;900&family=Tajawal:wght@400;500;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Inline fallback styles to prevent white flash -->
+    <style>
+      html, body { background-color: #0A0A0A !important; color: #F5F5F5; margin: 0; padding: 0; }
+      #root:empty::after {
+        content: '⏰ جاري تحميل المنبه...';
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        font-family: 'Tajawal', 'Cairo', sans-serif;
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #FACC15;
+        text-align: center;
+      }
+      #app-error-display {
+        display: none;
+        position: fixed; inset: 0; z-index: 9999;
+        background: #0A0A0A; color: #F5F5F5;
+        font-family: 'Tajawal', sans-serif;
+        padding: 2rem; text-align: center;
+        flex-direction: column; align-items: center; justify-content: center; gap: 1rem;
+      }
+      #app-error-display.visible { display: flex; }
+      #app-error-display h1 { color: #FACC15; font-size: 1.5rem; font-weight: 800; }
+      #app-error-display pre { 
+        background: #1a1a1a; border: 1px solid #333; padding: 1rem; 
+        font-size: 0.75rem; max-width: 90vw; overflow-x: auto; text-align: left;
+        direction: ltr; color: #ef4444; font-family: 'JetBrains Mono', monospace;
+      }
+      #app-error-display button {
+        background: #FACC15; color: black; border: none; padding: 0.75rem 2rem;
+        font-weight: 800; font-size: 0.875rem; cursor: pointer;
+      }
+    </style>
+  </head>
+  <body style="background-color: #0A0A0A; color: #F5F5F5; font-family: 'Tajawal', sans-serif; -webkit-tap-highlight-color: transparent;">
+    <!-- Error display (hidden by default) -->
+    <div id="app-error-display">
+      <h1>⚠️ حدث خطأ أثناء تشغيل التطبيق</h1>
+      <pre id="app-error-message"></pre>
+      <button onclick="window.location.reload()">🔄 إعادة تحميل الصفحة</button>
+    </div>
+
+    <div id="root"></div>
+
+    <!-- Global error handler to catch and display any JS errors -->
+    <script>
+      window.addEventListener('error', function(event) {
+        // Skip fetch-related errors (handled by fetch patch)
+        if (event && event.message && event.message.includes('fetch') && event.message.includes('getter')) return;
+        
+        var errorDiv = document.getElementById('app-error-display');
+        var errorMsg = document.getElementById('app-error-message');
+        if (errorDiv && errorMsg) {
+          errorMsg.textContent = (event.message || 'Unknown error') + '\n\nFile: ' + (event.filename || '?') + '\nLine: ' + (event.lineno || '?') + ':' + (event.colno || '?');
+          errorDiv.classList.add('visible');
+        }
+        console.error('App Error:', event.message, event.filename, event.lineno);
+      });
+      window.addEventListener('unhandledrejection', function(event) {
+        if (event && event.reason && event.reason.message && event.reason.message.includes('fetch') && event.reason.message.includes('getter')) return;
+        
+        var errorDiv = document.getElementById('app-error-display');
+        var errorMsg = document.getElementById('app-error-message');
+        if (errorDiv && errorMsg) {
+          var msg = event.reason ? (event.reason.message || event.reason.stack || String(event.reason)) : 'Unknown rejection';
+          errorMsg.textContent = msg;
+          errorDiv.classList.add('visible');
+        }
+        console.error('Unhandled Promise Rejection:', event.reason);
+      });
+    </script>
+
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
